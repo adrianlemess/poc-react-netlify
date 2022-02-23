@@ -27,3 +27,9 @@ jobs:
       
       - name: Run tests
         run: yarn test
+
+      - name: Deploy project into Netlify
+        uses: netlify/actions/cli@master
+        with:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_DEPLOY_TO_PROD: true

@@ -1,6 +1,24 @@
 # POC React App
 
-## What you need to run this project?
+## Pre-requisites
+
+What was needed to run the project:
+
+- Github account
+- Git installed
+- Netlify account
+- Node version 16.14.0 installed
+- NPM version 8.5.1 installed
+- Docker installed
+
+## Principal resources used
+
+* [React](https://reactjs.org) - A JavaScript library for building user interfaces.
+* [Node.js](https://nodejs.org/en/) - Server-side Javascript execution environment.
+* [Docker](https://www.docker.com) - Container creation tool to ease the application packaging process.
+* [Github](https://github.com) - Repository of the code versioning.
+* [Netlify](https://www.netlify.com) - Offers serverless hosting and backend services for web applications and static websites.
+
 
 ## Getting Started with Create React App
 
@@ -59,8 +77,6 @@ You need to log into your Netlify account and create the project there by follow
 
 - After that you will need to pick a repository and then click in `Deploy site`.
 
-![netlify-deploy-site](images/netlify-deploy-site.png)
-
 - Once this is done, you will be redirected to the page of the created site and then this screen will appear and you will click on `Site Settings`:
 
 ![netlify-site-setting](images/netlify-site-setting.png)
@@ -83,4 +99,4 @@ You need to log into your Netlify account and create the project there by follow
 
 ![netlify-secrets](images/netlify-secrets.png)
 
-## 
+- After all the configuration is done, each time the project is updated on Github, a CI workflow will start within Github Actions and the project will be updated on Netlify, if the deployment was successful.

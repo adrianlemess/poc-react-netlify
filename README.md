@@ -1,4 +1,7 @@
 # POC React App
+
+## What you need to run this project?
+
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -79,3 +82,5 @@ You need to log into your Netlify account and create the project there by follow
 - Then go to your project on GitHub and add the secrets you noted from Netlify. The `NETLIFY_SITE_ID` property and the `NETLIFY_AUTH_TOKEN` property with their respective values.
 
 ![netlify-secrets](images/netlify-secrets.png)
+
+## 

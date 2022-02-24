@@ -3,11 +3,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Run React App Locally
 
 In the project directory, you can run:
 
-### `npm start`
+```npm start```
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
@@ -15,57 +15,67 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+```npm test```
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+```npm run build```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Run React App from Dockerfile Locally
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+In the project directory, to build the application with Docker multistage you can run:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```docker build -t poc-react-netlify .```
 
-### `npm run eject`
+```docker run --rm -it -p 3000:80 poc-react-netlify```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+After that, you can access the application with this URL in your browser:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```http://localhost:3000```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Run React App using Github Actions and Deploying into Netlify
 
-## Learn More
+To run the project at your Github Account like an POC, you need to do `git clone` from the project and to do `git push` afterwards to your account.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+When you push the project at your Github Account, inside the folder of the project, you will see a tab `Actions`:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![github-actions](images/github-actions.png)
 
-### Code Splitting
+Inside of the tab `Actions` you will see that the project start the CI building, but since you haven't set the access secrets for Netlify yet, the CI will fail.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+You need to log into your Netlify account and create the project there by following the steps below:
 
-### Analyzing the Bundle Size
+- Access your Netlify Account
+- In the initial page of your account, you will see this information and you will choose `Import from Git`:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![netlify-import-git](images/netlify-import-git.png) 
 
-### Making a Progressive Web App
+![netlify-connect-git](images/netlify-connect-git.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- After that you will need to pick a repository and then click in `Deploy site`.
 
-### Advanced Configuration
+![netlify-deploy-site](images/netlify-deploy-site.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Once this is done, you will be redirected to the page of the created site and then this screen will appear and you will click on `Site Settings`:
 
-### Deployment
+![netlify-site-setting](images/netlify-site-setting.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Under General Information you will find the value of the `API ID` property. Copy the value and save it in a notepad with the `NETLIFY_SITE_ID` property.
 
-### `npm run build` fails to minify
+![netlify-api-id](images/netlify-api-id.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Then go to your profile and choose the `User settings` option.
+
+![netlify-user-settings](images/netlify-user-settings.png)
+
+- Go to `Applications` and then to `Personal Access Tokens` and click in `New access token`.
+
+![netlify-user-application](images/netlify-user-application.png)
+
+- Copy the value of the generated token above and write it to the notepad as the value of the `NETLIFY_AUTH_TOKEN` property.
+
+- Then go to your project on GitHub and add the secrets you noted from Netlify. The `NETLIFY_SITE_ID` property and the `NETLIFY_AUTH_TOKEN` property with their respective values.
+
+![netlify-secrets](images/netlify-secrets.png)
